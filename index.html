@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <title>Projekt</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    </head>
+    <body>
+
+        <div class="container">
+
+<!-- popup start -->
+            <div class="popup-background"></div>
+            <div class="popup-docs">
+                <div style="width: 100%; text-align: center; margin-bottom: 10px;">
+                    <span style="font-size: 22px; float: center;">Dodawanie dokumentu</span>
+                    <span style="float: right;"> <i style="color: black; cursor: pointer;" class="fa fa-close" id="closePopupBtn"></i> </span>
+                </div>
+
+                <div style="display: flex;">
+                    <table>
+                        <tr>
+                            <td>Numer:</td>
+                            <td style="padding-right: 20px;"><input type="text" id="doc-number" required></td>
+                            <td>Nazwa dokumentu:</td>
+                            <td><input type="text" id="doc-name" required></td>
+                        </tr>
+                        <tr>
+                            <td>Typ dokumentu:</td>
+                            <td style="padding-right: 20px;"><input type="text" id="doc-type"required></td>
+                            <td>Data rozpoczęcia:</td>
+                            <td><input type="text" id="doc-date"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <button class="addDocBtn">Dodaj</button>
+
+            </div>
+<!-- popup end -->
+
+            <div class="content">
+
+                <div class="top-menu">
+                    <div class="docs"><i class="fa fa-file"></i></div>
+                    <div class="billings"><i class="fa fa-book"></i></div>
+                    <div class="reports"><i class="fa fa-folder"></i></div>
+                    <div class="organization" ><i class="fa fa-users"></i></div>
+                    <div class="settings"><i class="fa fa-gear"></i></div>
+                    
+                    <div class="menu-title"><span class="main-menu-title"></span></div>
+                </div>
+
+                <div class="main-content">
+<!-- dokumenty -->
+                    <div class="documents-container show">
+
+                        <div class="documents-top-menu">
+                            <button class="openBtn"><i class="fa fa-plus"></i></button>
+                            <input type="text" class="searchDoc" placeholder="Szukaj">
+                        </div>
+
+                        <div class="documents-main">
+                            <table>
+                                <tbody id="doc-table">
+                                <tr class="table-navbar">
+                                    <td>NUMER</td>
+                                    <td>NAZWA DOKUMENTU</td>
+                                    <td>TYP DOKUMENTU</td>
+                                    <td>STATUS</td>
+                                    <td>DATA ROZPOCZĘCIA</td>
+                                    <td>DATA ZAKOŃCZENIA</td>
+                                    <td></td>
+                                </tr>
+
+                                <tr>
+                                    <td>123456789/xyz</td>
+                                    <td>Wniosek o przyznanie dostępu</td>
+                                    <td>Wniosek</td>
+                                    <td><i class="fa fa-circle" style="color: green;"></i> Zakończone</td>
+                                    <td>2022-10-28</td>
+                                    <td>2022-11-03</td>
+                                    <td><button class="delDoc"><i class="fa fa-trash"></i></button></td>
+                                </tr>
+
+                                <tr>
+                                    <td>654456789/xyz</td>
+                                    <td>Wniosek o uprawnienia</td>
+                                    <td>Wniosek</td>
+                                    <td><i class="fa fa-circle" style="color: green;"></i> Zakończone</td>
+                                    <td>2022-11-01</td>
+                                    <td>2022-11-08</td>
+                                    <td><button class="delDoc"><i class="fa fa-trash"></i></button></td>
+                                </tr>
+
+                                <tr>
+                                    <td>543456789/xyz</td>
+                                    <td>Raport miesięczny</td>
+                                    <td>Raport</td>
+                                    <td><i class="fa fa-circle" style="color: green;"></i> Zakończone</td>
+                                    <td>2022-11-01</td>
+                                    <td>2022-11-10</td>
+                                    <td><button class="delDoc"><i class="fa fa-trash"></i></button></td>
+                                </tr>
+
+                                <tr>
+                                    <td>342456789/xyz</td>
+                                    <td>Plik ewidencyjny za październik</td>
+                                    <td>Ewidencja</td>
+                                    <td><i class="fa fa-circle" style="color: green;"></i> Zakończone</td>
+                                    <td>2022-11-05</td>
+                                    <td>2022-11-09</td>
+                                    <td><button class="delDoc"><i class="fa fa-trash"></i></button></td>
+                                </tr>
+
+                                <tr>
+                                    <td>432456789/xyz</td>
+                                    <td>Wniosek urlopowy</td>
+                                    <td>Wniosek</td>
+                                    <td class="doc-status"><i class="fa fa-circle" style="color: orange;"></i> W trakcie ...</td>
+                                    <td>2022-11-19</td>
+                                    <td><span class="end-date">Zakończ</span></td>
+                                    <td><button class="delDoc"><i class="fa fa-trash"></i></button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+<!-- faktury -->
+                    <div class="billings-container">
+
+                        <div class="billings-content">
+                            
+                            <div style="border: 1px solid #d4d4d4; padding: 10px 0; width: 100%; margin-bottom: 20px;">
+                                <span style="margin-left: 15px;">Dokument</span>
+                                <input type="text" value="xyz" style="pointer-events: none; margin-right: 20px;">
+
+                                <span>Numer</span>
+                                <input type="text" value="123213123" style="pointer-events: none;">
+                            </div>
+
+                            <span>Informacje</span>
+
+                            <div style="width: 100%; border: 1px solid #d4d4d4; display: flex; flex-direction: row;">
+                                <table style="margin: 10px 15px; border-spacing: 10px;">
+                                    <tr>
+                                        <td>Kontrahent:</td>
+                                        <td style="border: 1px solid black;">XYZ sp z o.o.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kategoria:</td>
+                                        <td style="border: 1px solid black;">Przychody</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Magazyn:</td>
+                                        <td style="border: 1px solid black;">Magazyn główny</td>
+                                    </tr>
+                                </table>
+
+                                <table style="margin: 10px 15px; border-spacing: 10px;">
+                                    <tr>
+                                        <td>Data wystawienia:</td>
+                                        <td style="border: 1px solid black;">15.11.2022</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Data sprzedaży:</td>
+                                        <td style="border: 1px solid black;">15.11.2022</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Faktura liczona od:</td>
+                                        <td style="border: 1px solid black;">netto</td>
+                                    </tr>
+                                </table>
+
+                                <table style="margin: 10px 15px; border-spacing: 10px;">
+                                    <tr>
+                                        <td>Rabat:</td>
+                                        <td style="border: 1px solid black;">0.00%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Płatność:</td>
+                                        <td style="border: 1px solid black;">przelew</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Termin 7 dni:</td>
+                                        <td style="border: 1px solid black;">22.11.2022</td>
+                                    </tr>
+                                </table>
+
+                                <table style="margin: 10px 15px; border-spacing: 10px;">
+                                    <tr>
+                                        <td>Netto:</td>
+                                        <td style="border: 1px solid black;">5390,00 PLN</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Razem:</b></td>
+                                        <td style="border: 1px solid black;"><b>7000,00 PLN</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Zapłacono:</td>
+                                        <td style="border: 1px solid black;">0,00 PLN</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pozostaje:</td>
+                                        <td style="border: 1px solid black;">7000,00 PLN</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div>
+                                <table style="border-collapse: collapse; margin-top: 10px; width: 100%;">
+                                    <tr class="table-top-border">
+                                        <td>Lp.</td>
+                                        <td>Kod</td>
+                                        <td>Nazwa</td>
+                                        <td>Ilość(szt.)</td>
+                                        <td>Rabat</td>
+                                        <td>Cena</td>
+                                        <td>Cena kon.</td>
+                                        <td>Suma</td>
+                                    </tr>
+
+                                    <tr style="border-bottom: 1px solid black;">
+                                        <td>1</td>
+                                        <td>MYSZ</td>
+                                        <td>Myszka komputerowa</td>
+                                        <td>20</td>
+                                        <td>1.99</td>
+                                        <td>29,99</td>
+                                        <td>28,00</td>
+                                        <td>560,00</td>
+                                    </tr>
+
+                                    <tr style="border-bottom: 1px solid black;">
+                                        <td>2</td>
+                                        <td>MON</td>
+                                        <td>Monitor</td>
+                                        <td>10</td>
+                                        <td>19,99</td>
+                                        <td>599,99</td>
+                                        <td>580,00</td>
+                                        <td>5800,00</td>
+                                    </tr>
+
+                                    <tr style="border-bottom: 1px solid black;">
+                                        <td>3</td>
+                                        <td>KLAW</td>
+                                        <td>Klawiatura</td>
+                                        <td>20</td>
+                                        <td>2,99</td>
+                                        <td>34,99</td>
+                                        <td>32,00</td>
+                                        <td>640,00</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="button-dow">
+
+                                <a href="./faktura-pdf.pdf" download="faktura-pdf"><button class="dowloand-pdf"><i class=""></i>Pobierz PDF</button></a>
+
+                            </div>
+                            
+                        </div>
+
+                    </div>
+<!-- raporty -->
+                    <div class="reports-container">
+
+                        <div class="reports-left">
+                           
+                            <ul style="list-style: none;">
+                                <li><span style="text-decoration:underline; color: #222277;">Pracownicy</span></li>
+                                <li><span>Stanowiska</span></li>
+                                <li><span>Dokumenty</span></li>
+                                <li><span>Wyniki sprzedażowe</span></li>
+                            </ul>
+
+                        </div>
+
+                        <div class="reports-right">
+            
+                            <img src="images/raport.PNG">
+
+                        </div>
+
+                    </div>
+<!-- struktura organizacyjna -->
+                    <div class="organization-container">
+
+                        <div class="organization-left">
+                           
+                            <ul style="list-style: none;">
+                                <li>
+                                    <b>&#8600 </b> <span>ODDZIAŁ</span> 
+                                    <ul style="list-style: none;">
+                                        <li>
+                                            <b>&#8600 </b> <span>WARSZAWA</span>
+                                            <ul style="list-style: none;">
+                                                <li>
+                                                    <b>&#8600 </b> <span>PRACOWNIK</span>
+                                                    <ul style="list-style: none;">
+                                                        <li> <span style="text-decoration: underline; color:#222277;">Jan Kowalski</span> </li>
+                                                        <li> <span>Janina Kowalska</span> </li>
+                                                        <li> <span>Marek Kowalski</span> </li>
+                                                        <li> <span>Tomasz Kowalski</span> </li>
+                                                        <li> <span>Bartek Kowalski</span> </li>
+                                                        <li> <span>Anna Kowalska</span> </li>
+                                                        
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><b>&#10230</b><span> KRAKÓW</span></li>
+                                        <li><b>&#10230</b><span> WROCŁAW</span></li>
+                                        <li><b>&#10230</b><span> RZESZÓW</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <div class="organization-right">
+
+                            <div style="width: 100%; background: #2a2a92; height: 25px; margin-bottom: 20px;"> <span style="padding: 3px 10px;">Pracownik</span> </div>
+
+                                <table style="border-spacing: 20px;">
+                                    <tr>
+                                        <td>Login:</td>
+                                        <td style="border: 1px solid grey; padding: 2px 8px;">jankow12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Imie i nazwisko:</td>
+                                        <td style="border: 1px solid grey; padding: 2px 8px;">Jan Kowalski</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email:</td>
+                                        <td style="border: 1px solid grey; padding: 2px 8px;">jan.kowalski@mail.com.pl</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Stanowisko:</td>
+                                        <td style="border: 1px solid grey; padding: 2px 8px;">Administrator sieci</td>
+                                    </tr>
+                                </table>
+
+                        </div>
+
+                    </div>
+<!-- ustawienia -->
+                    <div class="settings-container">
+
+                        <div class="login">
+                            <span style="font-size: 26px; font-weight: bold;">Zaloguj się</span> <br>
+
+                            <span>Nazwa użytkownika</span>
+                            <input type="text" style="margin-bottom: 10px;" required>
+
+                            <span>Hasło</span>
+                            <input type="password" required> 
+
+                            <a href="" style="font-size: 14px">Nie pamiętasz hasła?</a>
+
+                            <button>Zaloguj</button>
+
+                        </div>
+
+                        <div class="sett">
+
+                            <div class="sett-inputs">
+                                <span style="font-size: 12px;">Ścieżka do zapisu plików</span>
+                                <input type="text" style="width: 100%; margin-bottom: 15px;">
+                                <span><input type="checkbox">Tryb ciemny</span>
+                                <span><input type="checkbox">Wyłącz powiadomienia</span>
+                                <span><input type="checkbox">Automatyczne wylogowanie po zamknięciu strony</span>
+                                <form action="">
+                                    <label>
+                                        Automatyczne wylogowanie po:
+                                        <select name="" id="">
+                                            <option>10 min</option>
+                                            <option>15 min</option>
+                                            <option>20 min</option>
+                                            <option>30 min</option>
+                                            <option>45 min</option>
+                                            <option>60 min</option>
+                                        </select>
+                                        nieaktywności
+                                    </label>
+                                </form>
+
+                                <form action="">
+                                    <label>
+                                        Rozmiar czcionki: 
+                                        <select name="" id="">
+                                            <option>mała</option>
+                                            <option>średnia</option>
+                                            <option>duża</option>
+                                        </select>
+                                    </label>
+                                </form>
+                                
+                            </div>
+
+                            <button>Zapisz</button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="footer">
+               <!-- <span>Designed by <span style="font-family: Brush Script MT, Brush Script Std, cursive; font-size: 22px; margin-left: 3px;"> Kamil Rutkowski</span></span> -->
+            </div>
+
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
+
