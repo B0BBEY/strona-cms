@@ -147,7 +147,7 @@ $(document).on('click','.end-date',function(){
     let thisRow = this.closest('tr')
     const allTd = thisRow.getElementsByTagName('td')
     let today = new Date().toISOString().slice(0, 10)
-    allTd[3].innerHTML = '<i class="fa fa-circle" style="color: green;"></i> Zakończone'
+    allTd[3].innerHTML = '<i class="bi bi-circle-fill" style="color: green;"></i> Zakończone'
     allTd[5].textContent = today
 });
 
