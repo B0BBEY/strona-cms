@@ -154,7 +154,7 @@ $(document).on('click','.end-date',function(){
 
 
 
-// ADDEVENTLISTERS 
+// ADDEVENTLISTERS  
 
 docs.addEventListener('mouseover', docsHover)
 billings.addEventListener('mouseover', billingsHover)
