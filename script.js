@@ -123,7 +123,7 @@ const closePopup = () => {
 const createNewPos = () => {
     $('<tr><td>'+ docNumber.value +'</td><td>'+ docName.value +'</td><td>'+ docType.value +
     '</td><td class="doc-status"><i class="fa fa-circle" style="color: orange;"></i> W trakcie ...</td><td>'+ docDate.value +
-    '</td><td><span class="end-date">Zakończ</span></td><td><button class="delDoc"><i class="fa fa-trash"></i></button></td></tr>').appendTo(docTable)
+    '</td><td><span class="end-date">Zakończ</span></td><td><button class="delDoc"><i class="bi bi-trash3"></i></button></td></tr>').appendTo(docTable)
 
     popupBackground.classList.remove('show')
     popupMain.classList.remove('show')
